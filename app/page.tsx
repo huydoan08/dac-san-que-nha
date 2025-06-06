@@ -26,6 +26,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import Link from "next/link"
+import { createOrder } from '@/lib/orderService'
 
 const categories = [
   {
@@ -158,13 +159,19 @@ interface CartItem {
 interface OrderData {
   customerName: string
   phone: string
-  email: string
+  email?: string
   address: string
-  note: string
-  items: CartItem[]
+  note?: string
+  items: {
+    productId: string
+    name: string
+    price: number
+    quantity: number
+  }[]
   total: number
-  orderDate: string
-  orderId: string
+  status: 'pending' | 'confirmed' | 'shipped' | 'delivered'
+  orderDate?: string
+  orderId?: string
 }
 
 export default function HomePage() {
@@ -283,34 +290,63 @@ export default function HomePage() {
     return "DH" + Date.now().toString().slice(-8)
   }
 
-  const handleCreateOrder = () => {
-    if (cart.length === 0) return
-
-    const order: OrderData = {
-      customerName: customerInfo.name,
-      phone: customerInfo.phone,
-      email: customerInfo.email,
-      address: customerInfo.address,
-      note: customerInfo.note,
-      items: [...cart],
-      total: getTotalPrice(),
-      orderDate: new Date().toLocaleString("vi-VN"),
-      orderId: generateOrderId(),
+  const handleCreateOrder = async () => {
+    console.log('Starting handleCreateOrder');
+    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
+      console.log('Missing required fields:', { customerInfo });
+      alert('Vui lòng điền đầy đủ thông tin bắt buộc');
+      return;
     }
 
-    setOrderData(order)
-    setCart([])
-    setShowOrderForm(false)
-    setShowCart(false)
-    setBuyNowMode(false) // Reset buy now mode
-    setCustomerInfo({
-      name: "",
-      phone: "",
-      email: "",
-      address: "",
-      note: "",
-    })
-  }
+    try {
+      console.log('Creating order with data:', {
+        customerInfo,
+        cart,
+        total: getTotalPrice()
+      });
+
+      const orderData = {
+        customerName: customerInfo.name,
+        phone: customerInfo.phone,
+        address: customerInfo.address,
+        items: cart.map(item => ({
+          productId: item.id.toString(),
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity
+        })),
+        total: getTotalPrice(),
+        status: 'pending' as const
+      };
+
+      console.log('Sending order to Firebase:', orderData);
+      await createOrder(orderData);
+      console.log('Order created successfully');
+      
+      setOrderData({
+        ...orderData,
+        email: customerInfo.email,
+        note: customerInfo.note,
+        orderDate: new Date().toISOString(),
+        orderId: generateOrderId()
+      });
+
+      setCart([]);
+      setCustomerInfo({
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        note: "",
+      });
+      setShowOrderForm(false);
+      setBuyNowMode(false);
+      alert('Đặt hàng thành công!');
+    } catch (error) {
+      console.error('Error creating order:', error);
+      alert('Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại sau.');
+    }
+  };
 
   const handleScroll = () => {
     if (scrollContainerRef.current) {
