@@ -416,7 +416,7 @@ export default function HomePage() {
             <Button
               size="sm"
               variant="outline"
-              className="ml-4 text-white border-white hover:bg-white hover:text-orange-500 hidden md:flex"
+              className="ml-4 text-green-600 border-white hover:bg-white hover:text-orange-500 hidden md:flex"
             >
               Nhận voucher
             </Button>
