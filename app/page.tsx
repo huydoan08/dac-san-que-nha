@@ -27,6 +27,7 @@ import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import Link from "next/link"
 import { createOrder } from '@/lib/orderService'
+import { products } from "./data"
 
 const categories = [
   {
@@ -49,79 +50,7 @@ const categories = [
   },
 ]
 
-const products = [
-  {
-    id: 1,
-    name: "Nem Nắm Truyền Thống",
-    price: 120000,
-    originalPrice: 150000,
-    image: "/nem-nam-01.png",
-    rating: 4.9,
-    reviews: 156,
-    description: "Nem nắm được làm từ thịt heo tươi, ủ chua theo công thức truyền thống, gói lá chuối thơm ngon",
-    badge: "Đặc sản",
-    unit: "kg",
-    stock: 50,
-    category: "Nem Nắm",
-  },
-  {
-    id: 2,
-    name: "Bột Sắn Nguyên Chất",
-    price: 45000,
-    originalPrice: 55000,
-    image: "/bot-san-04.png",
-    rating: 4.8,
-    reviews: 203,
-    description: "Bột sắn được sấy khô tự nhiên, không chất bảo quản, thích hợp làm bánh và các món ăn",
-    badge: "Sạch",
-    unit: "kg",
-    stock: 100,
-    category: "Bột Sắn",
-  },
-  {
-    id: 3,
-    name: "Bột Nghệ Tươi",
-    price: 85000,
-    originalPrice: 100000,
-    image: "/bot-nghe-01.png",
-    rating: 4.7,
-    reviews: 124,
-    description: "Nghệ tươi được sấy khô và xay mịn, giữ nguyên màu sắc và dưỡng chất tự nhiên",
-    badge: "Organic",
-    unit: "kg",
-    stock: 75,
-    category: "Bột Nghệ",
-  },
-  {
-    id: 4,
-    name: "Combo 2 Sản Phẩm",
-    price: 220000,
-    originalPrice: 280000,
-    image: "/bot-san.png",
-    rating: 4.9,
-    reviews: 89,
-    description: "Combo gồm bột sắn (1kg), bột nghệ (0.5kg) - tiết kiệm hơn khi mua lẻ",
-    badge: "Tiết kiệm",
-    unit: "combo",
-    stock: 30,
-    category: "Combo",
-  },
-  {
-    id: 5,
-    name: "Bột Sắn Đóng Gói 500g",
-    price: 25000,
-    originalPrice: 30000,
-    image: "/bot-san-03.png",
-    rating: 4.8,
-    reviews: 78,
-    description: "Bột sắn nguyên chất đóng gói nhỏ, tiện lợi sử dụng",
-    badge: "Mới",
-    unit: "gói",
-    stock: 120,
-    category: "Bột Sắn",
-  },
 
-]
 
 const testimonials = [
   {
@@ -429,7 +358,7 @@ export default function HomePage() {
         <div className="bg-orange-500 text-white py-2 px-4 text-center">
           <div className="container mx-auto flex items-center justify-center">
             <p className="text-sm md:text-base font-medium">
-              SIÊU SALE THÁNG 6 - ƯU ĐÃI LÊN ĐẾN 20% - Mua ngay kẻo lỡ!
+              SIÊU SALE THÁNG 6!
             </p>
             {/* <Button
               size="sm"
@@ -531,7 +460,7 @@ export default function HomePage() {
                       className="rounded-lg object-cover"
                     />
                     <div className="absolute -bottom-4 -right-4 bg-orange-500 text-white py-2 px-4 rounded-lg shadow-lg">
-                      <p className="text-sm font-bold">Giảm giá 20%</p>
+                      <p className="text-sm font-bold">Giảm giá 10K</p>
                     </div>
                   </div>
                 </motion.div>
