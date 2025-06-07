@@ -681,7 +681,7 @@ export default function HomePage() {
                 {
                   icon: "💯",
                   title: "Chất Lượng Đảm Bảo",
-                  description: "Cam kết chất lượng, hoàn tiền 100% nếu không hài lòng",
+                  description: "Cam kết chất lượng, hoàn tiền 100% nếu không chất lượng",
                 },
               ].map((feature, index) => (
                 <motion.div
