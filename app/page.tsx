@@ -291,20 +291,7 @@ export default function HomePage() {
   }
 
   const handleCreateOrder = async () => {
-    console.log('Starting handleCreateOrder');
-    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
-      console.log('Missing required fields:', { customerInfo });
-      alert('Vui lòng điền đầy đủ thông tin bắt buộc');
-      return;
-    }
-
     try {
-      console.log('Creating order with data:', {
-        customerInfo,
-        cart,
-        total: getTotalPrice()
-      });
-
       const orderData = {
         customerName: customerInfo.name,
         phone: customerInfo.phone,
@@ -318,10 +305,7 @@ export default function HomePage() {
         total: getTotalPrice(),
         status: 'pending' as const
       };
-
-      console.log('Sending order to Firebase:', orderData);
       await createOrder(orderData);
-      console.log('Order created successfully');
       
       setOrderData({
         ...orderData,
@@ -341,9 +325,7 @@ export default function HomePage() {
       });
       setShowOrderForm(false);
       setBuyNowMode(false);
-      alert('Đặt hàng thành công!');
     } catch (error) {
-      console.error('Error creating order:', error);
       alert('Có lỗi xảy ra khi đặt hàng. Vui lòng thử lại sau.');
     }
   };
@@ -449,13 +431,13 @@ export default function HomePage() {
             <p className="text-sm md:text-base font-medium">
               SIÊU SALE THÁNG 6 - ƯU ĐÃI LÊN ĐẾN 20% - Mua ngay kẻo lỡ!
             </p>
-            <Button
+            {/* <Button
               size="sm"
               variant="outline"
               className="ml-4 text-green-600 border-white hover:bg-white hover:text-orange-500 hidden md:flex"
             >
               Nhận voucher
-            </Button>
+            </Button> */}
           </div>
         </div>
 
@@ -464,8 +446,8 @@ export default function HomePage() {
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">S</span>
+                <div className="w-20 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">Hải Anh</span>
                 </div>
                 <h1 className="text-2xl font-bold text-gray-800">Sản Phẩm Quê Nhà</h1>
               </div>
@@ -1104,20 +1086,35 @@ export default function HomePage() {
           </Dialog>
         )}
 
-        {/* Scroll to Top Button */}
-        {showScrollTop && (
-          <motion.button
+        {/* Scroll to Top Button and Zalo Button Container */}
+        <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center space-y-3">
+          <motion.a
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            onClick={scrollToTop}
-            className="fixed bottom-6 right-6 z-50 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
+            href="https://zalo.me/0984433566"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-blue-300 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl flex items-center justify-center"
           >
-            <ArrowUp className="w-6 h-6" />
-          </motion.button>
-        )}
+            <Image src="/zalo.png" alt="Zalo" width={30} height={30}/>
+          </motion.a>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={scrollToTop}
+              className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl"
+            >
+              <ArrowUp className="w-6 h-6" />
+            </motion.button>
+          )}
+        </div>
 
         {/* Footer */}
         <footer className="bg-gray-800 text-white py-12">
