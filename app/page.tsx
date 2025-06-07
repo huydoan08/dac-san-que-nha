@@ -440,7 +440,7 @@ export default function HomePage() {
                   whileHover={{ y: -5 }}
                   className="group"
                 >
-                  <Link href="#" className="block">
+                  <Link href={`/product/${category.id}`} className="block">
                     <div className="bg-orange-50 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300">
                       <div className="relative h-64">
                         <Image
@@ -525,63 +525,65 @@ export default function HomePage() {
                     whileHover={{ y: -5 }}
                     className="group flex-shrink-0 w-72"
                   >
-                    <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white h-full">
-                      <div className="relative">
-                        <Image
-                          src={product.image || "/placeholder.svg"}
-                          alt={product.name}
-                          width={300}
-                          height={300}
-                          className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <Badge className="absolute top-4 left-4 bg-orange-500 text-white">{product.badge}</Badge>
-                        <div className="absolute top-4 right-4 bg-white/90 rounded-full p-2">
-                          <div className="flex items-center space-x-1">
-                            <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                            <span className="text-sm font-medium">{product.rating}</span>
+                    <Link href={`/product/${product.id}`}>
+                      <Card className="overflow-hidden border-0 shadow-md hover:shadow-xl transition-all duration-300 bg-white h-full">
+                        <div className="relative">
+                          <Image
+                            src={product.image || "/placeholder.svg"}
+                            alt={product.name}
+                            width={300}
+                            height={300}
+                            className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <Badge className="absolute top-4 left-4 bg-orange-500 text-white">{product.badge}</Badge>
+                          <div className="absolute top-4 right-4 bg-white/90 rounded-full p-2">
+                            <div className="flex items-center space-x-1">
+                              <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                              <span className="text-sm font-medium">{product.rating}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
 
-                      <CardContent className="p-4">
-                        <div className="text-xs text-gray-500 mb-1">{product.category}</div>
-                        <h4 className="text-lg font-bold mb-2 text-gray-800 group-hover:text-orange-500 transition-colors">
-                          {product.name}
-                        </h4>
+                        <CardContent className="p-4">
+                          <div className="text-xs text-gray-500 mb-1">{product.category}</div>
+                          <h4 className="text-lg font-bold mb-2 text-gray-800 group-hover:text-orange-500 transition-colors">
+                            {product.name}
+                          </h4>
 
-                        <div className="flex items-center justify-between mb-3">
-                          <div>
-                            <span className="text-xl font-bold text-orange-500">{formatPrice(product.price)}</span>
-                            <span className="text-sm text-gray-500 line-through ml-2">
-                              {formatPrice(product.originalPrice)}
+                          <div className="flex items-center justify-between mb-3">
+                            <div>
+                              <span className="text-xl font-bold text-orange-500">{formatPrice(product.price)}</span>
+                              <span className="text-sm text-gray-500 line-through ml-2">
+                                {formatPrice(product.originalPrice)}
+                              </span>
+                            </div>
+                          </div>
+
+                          <div className="mb-4">
+                            <span className="text-sm text-gray-600">
+                              Đã bán: {product.reviews * 3} | Còn lại: {product.stock}
                             </span>
                           </div>
-                        </div>
 
-                        <div className="mb-4">
-                          <span className="text-sm text-gray-600">
-                            Đã bán: {product.reviews * 3} | Còn lại: {product.stock}
-                          </span>
-                        </div>
-
-                        <div className="flex space-x-2">
-                          <Button
-                            className="flex-1 bg-orange-500 hover:bg-orange-600 text-white"
-                            onClick={() => handleBuyNow(product)}
-                          >
-                            Mua ngay
-                          </Button>
-                          <Button
-                            variant="outline"
-                            className="flex-1 border-orange-500 text-orange-500 hover:bg-orange-50"
-                            onClick={() => addToCart(product)}
-                          >
-                            <ShoppingCart className="w-4 h-4 mr-2" />
-                            Thêm vào giỏ
-                          </Button>
-                        </div>
-                      </CardContent>
-                    </Card>
+                          <div className="flex space-x-2">
+                            <Button
+                              className="flex-1 bg-orange-500 hover:bg-orange-600 text-white"
+                              onClick={() => handleBuyNow(product)}
+                            >
+                              Mua ngay
+                            </Button>
+                            <Button
+                              variant="outline"
+                              className="flex-1 border-orange-500 text-orange-500 hover:bg-orange-50"
+                              onClick={() => addToCart(product)}
+                            >
+                              <ShoppingCart className="w-4 h-4 mr-2" />
+                              Thêm vào giỏ
+                            </Button>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
                   </motion.div>
                 ))}
               </div>
