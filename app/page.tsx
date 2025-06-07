@@ -235,7 +235,7 @@ export default function HomePage() {
         status: 'pending' as const
       };
       await createOrder(orderData);
-      
+
       setOrderData({
         ...orderData,
         email: customerInfo.email,
@@ -332,14 +332,6 @@ export default function HomePage() {
               </div>
               <h1 className="text-3xl font-bold text-gray-800">Sản Phẩm Quê Nhà</h1>
             </motion.div>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="text-gray-600 mt-4"
-            >
-              Đang tải sản phẩm tươi ngon...
-            </motion.p>
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
@@ -354,61 +346,22 @@ export default function HomePage() {
         animate={{ opacity: isLoading ? 0 : 1 }}
         transition={{ duration: 0.5, delay: isLoading ? 0 : 0.3 }}
       >
-        {/* Promo Banner */}
-        <div className="bg-orange-500 text-white py-2 px-4 text-center">
-          <div className="container mx-auto flex items-center justify-center">
-            <p className="text-sm md:text-base font-medium">
-              SIÊU SALE THÁNG 6!
-            </p>
-            {/* <Button
-              size="sm"
-              variant="outline"
-              className="ml-4 text-green-600 border-white hover:bg-white hover:text-orange-500 hidden md:flex"
-            >
-              Nhận voucher
-            </Button> */}
-          </div>
-        </div>
-
         {/* Header */}
         <header className="bg-white shadow-sm sticky top-0 z-50">
           <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center space-x-2">
-                <div className="w-50 h-10 bg-orange-500 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">Hải Anh Shop</span>
+                <div className="flex flex-col">
+                  <h1 className="text-xl md:text-2xl font-bold text-gray-800 font-serif italic tracking-wide">Hải Anh Food</h1>
+                  <p className="text-xs md:text-sm text-orange-500 font-medium">Sản Phẩm Quê Nhà</p>
                 </div>
-                <h1 className="text-2xl font-bold text-gray-800">Sản Phẩm Quê Nhà</h1>
               </div>
-
-              {/* Navigation */}
-              <nav className="hidden md:flex items-center space-x-8">
-                <Link href="#" className="text-gray-700 hover:text-orange-500 font-medium">
-                  Sản phẩm
-                </Link>
-                <Link href="#" className="text-gray-700 hover:text-orange-500 font-medium">
-                  Liên hệ
-                </Link>
-              </nav>
-
-              <div className="flex items-center space-x-4">
-                <Button variant="ghost" size="icon" className="text-gray-700">
-                  <Search className="w-5 h-5" />
-                </Button>
-                <Button variant="ghost" size="icon" className="text-gray-700">
-                  <User className="w-5 h-5" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="text-gray-700 relative"
-                  onClick={() => setShowCart(true)}
-                >
-                  <ShoppingCart className="w-5 h-5" />
-                  {cart.length > 0 && (
-                    <Badge className="absolute -top-2 -right-2 bg-orange-500 text-white">{getTotalItems()}</Badge>
-                  )}
-                </Button>
+              <div className="w-full md:w-auto bg-green-900 text-white py-3 md:py-5 text-center md:text-left">
+                <div className="container mx-auto">
+                  <p className="text-lg md:text-[30px] font-bold">
+                    HOTLINE: <a href="tel:0984433566" className="text-orange-300 hover:text-orange-400 transition-colors">0984.433.566</a> - <a href="tel:0389274886" className="text-orange-300 hover:text-orange-400 transition-colors">0389.274.886</a>
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -532,9 +485,8 @@ export default function HomePage() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className={`bg-white shadow-lg hover:bg-orange-50 border-orange-200 ${
-                    !canScrollLeft ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`bg-white shadow-lg hover:bg-orange-50 border-orange-200 ${!canScrollLeft ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   onClick={scrollLeft}
                   disabled={!canScrollLeft}
                 >
@@ -546,9 +498,8 @@ export default function HomePage() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className={`bg-white shadow-lg hover:bg-orange-50 border-orange-200 ${
-                    !canScrollRight ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                  className={`bg-white shadow-lg hover:bg-orange-50 border-orange-200 ${!canScrollRight ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   onClick={scrollRight}
                   disabled={!canScrollRight}
                 >
@@ -641,9 +592,8 @@ export default function HomePage() {
                   {products.slice(0, Math.min(6, products.length)).map((_, index) => (
                     <div
                       key={index}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        Math.floor(scrollPosition / 300) === index ? "bg-orange-500 w-6" : "bg-gray-300"
-                      }`}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${Math.floor(scrollPosition / 300) === index ? "bg-orange-500 w-6" : "bg-gray-300"
+                        }`}
                     />
                   ))}
                 </div>
@@ -732,9 +682,8 @@ export default function HomePage() {
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-4 h-4 ${
-                              i < testimonial.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
-                            }`}
+                            className={`w-4 h-4 ${i < testimonial.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300"
+                              }`}
                           />
                         ))}
                       </div>
@@ -1022,7 +971,7 @@ export default function HomePage() {
             rel="noopener noreferrer"
             className="bg-blue-300 hover:bg-blue-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl flex items-center justify-center"
           >
-            <Image src="/zalo.png" alt="Zalo" width={30} height={30}/>
+            <Image src="/zalo.png" alt="Zalo" width={30} height={30} />
           </motion.a>
           {showScrollTop && (
             <motion.button
@@ -1045,10 +994,11 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
                 <div className="flex items-center space-x-2 mb-4">
-                  <div className="w-10 h-10 bg-orange-500 rounded-full flex items-center justify-center">
-                    <span className="text-white font-bold text-lg">S</span>
+
+                  <div className="flex flex-col">
+                    <h4 className="text-xl font-bold text-white font-serif italic tracking-wide">Hải Anh Food</h4>
+                    <p className="text-sm text-orange-400">Sản Phẩm Quê Nhà</p>
                   </div>
-                  <h4 className="text-xl font-bold">Sản Phẩm Quê Nhà</h4>
                 </div>
                 <p className="text-gray-400">
                   Mang đến những sản phẩm tự nhiên, sạch, chất lượng cao từ quê hương Việt Nam.
