@@ -375,7 +375,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <div className="w-20 h-10 bg-orange-500 rounded-full flex items-center justify-center">
+                <div className="w-30 h-10 bg-orange-500 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-lg">Hải Anh Shop</span>
                 </div>
                 <h1 className="text-2xl font-bold text-gray-800">Sản Phẩm Quê Nhà</h1>
