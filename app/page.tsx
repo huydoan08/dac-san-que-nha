@@ -5,8 +5,6 @@ import { motion } from "framer-motion"
 import {
   ShoppingCart,
   Star,
-  Search,
-  User,
   ChevronRight,
   Phone,
   Mail,
@@ -27,54 +25,7 @@ import { Textarea } from "@/components/ui/textarea"
 import Image from "next/image"
 import Link from "next/link"
 import { createOrder } from '@/lib/orderService'
-import { products } from "./data"
-
-const categories = [
-  {
-    id: 1,
-    name: "Bột Sắn",
-    image: "/bot-san-01.png",
-    description: "Bột sắn nguyên chất, không chất bảo quản",
-  },
-  {
-    id: 2,
-    name: "Bột Nghệ",
-    image: "/bot-nghe.png",
-    description: "Bột nghệ tươi xay mịn, giữ nguyên dưỡng chất",
-  },
-  {
-    id: 3,
-    name: "Nem Nắm",
-    image: "/nem-nam.png",
-    description: "Nem nắm truyền thống, thơm ngon đậm đà",
-  },
-]
-
-
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Nguyễn Văn Huy",
-    avatar: "/placeholder.svg?height=50&width=50",
-    comment: "Sản phẩm rất chất lượng, đóng gói cẩn thận. Nem nắm thơm ngon như ở quê làm, sẽ ủng hộ shop dài dài.",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Trần Thị Hồng",
-    avatar: "/placeholder.svg?height=50&width=50",
-    comment: "Bột sắn rất mịn và trắng, làm bánh rất ngon. Giao hàng nhanh, sẽ mua lại.",
-    rating: 5,
-  },
-  {
-    id: 3,
-    name: "Lê Văn Nghị",
-    avatar: "/placeholder.svg?height=50&width=50",
-    comment: "Bột nghệ thơm, màu đẹp. Đã mua nhiều lần và luôn hài lòng với chất lượng.",
-    rating: 4,
-  },
-]
+import { categories, products, testimonials } from "./data"
 
 interface CartItem {
   id: number
@@ -305,9 +256,8 @@ export default function HomePage() {
   }
 
   return (
-    <>
-      {/* Loading Screen */}
-      {isLoading && (
+    <>  
+      {/* {isLoading && (
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: isLoading ? 1 : 0 }}
@@ -340,7 +290,7 @@ export default function HomePage() {
             />
           </div>
         </motion.div>
-      )}
+      )} */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}
@@ -352,8 +302,8 @@ export default function HomePage() {
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center space-x-2">
                 <div className="flex flex-col">
-                  <h1 className="text-xl md:text-2xl font-bold text-gray-800 font-serif italic tracking-wide">Hải Anh Food</h1>
-                  <p className="text-xs md:text-sm text-orange-500 font-medium">Sản Phẩm Quê Nhà</p>
+                  <h1 className="text-xl md:text-2xl font-bold text-gray-800 font-serif italic tracking-wide">Hải Anh Grocery </h1>
+                  <p className="text-xs md:text-sm text-orange-500 font-medium">Tiệm Tạp Hóa Gia Đình</p>
                 </div>
               </div>
               <div className="w-full md:w-auto bg-green-900 text-white py-3 md:py-5 text-center md:text-left">
@@ -381,7 +331,7 @@ export default function HomePage() {
                     Sản phẩm truyền thống <span className="text-orange-500">từ quê nhà</span>
                   </h2>
                   <p className="text-lg text-gray-600 mb-8">
-                    Bột sắn, bột nghệ, nem nắm - Sạch, ngon, đậm đà hương vị quê hương. Được sản xuất theo phương pháp
+                    Bột sắn, bột nghệ sạch, ngon, mang hương vị quê hương. Được sản xuất theo phương pháp
                     truyền thống, không chất bảo quản.
                   </p>
                   <div className="flex space-x-4">
@@ -968,6 +918,19 @@ export default function HomePage() {
             exit={{ opacity: 0, scale: 0 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
+            href="tel:0984433566"
+            className="relative bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl flex items-center justify-center"
+          >
+            <Phone className="w-6 h-6" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-ping" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full" />
+          </motion.a>
+          <motion.a
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
             href="https://zalo.me/0984433566"
             target="_blank"
             rel="noopener noreferrer"
@@ -998,7 +961,7 @@ export default function HomePage() {
                 <div className="flex items-center space-x-2 mb-4">
 
                   <div className="flex flex-col">
-                    <h4 className="text-xl font-bold text-white font-serif italic tracking-wide">Hải Anh Food</h4>
+                    <h4 className="text-xl font-bold text-white font-serif italic tracking-wide">Hải Anh Grocery </h4>
                     <p className="text-sm text-orange-400">Sản Phẩm Quê Nhà</p>
                   </div>
                 </div>

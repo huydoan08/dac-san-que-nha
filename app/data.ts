@@ -1,19 +1,5 @@
 export const products = [
   {
-    id: 1,
-    name: "Nem Nắm Truyền Thống",
-    price: 50000,
-    originalPrice: 55000,
-    image: "/nem-nam-01.png",
-    rating: 4.9,
-    reviews: 156,
-    description: "Nem nắm được làm từ thịt heo tươi, ủ chua theo công thức truyền thống, gói lá chuối thơm ngon",
-    badge: "Đặc sản",
-    unit: "kg",
-    stock: 50,
-    category: "Nem Nắm",
-  },
-  {
     id: 2,
     name: "Bột Sắn Nguyên Chất",
     price: 145000,
@@ -49,7 +35,7 @@ export const products = [
     image: "/bot-san.png",
     rating: 4.9,
     reviews: 89,
-    description: "Combo gồm bột sắn (1kg), bột nghệ (0.5kg) - tiết kiệm hơn khi mua lẻ",
+    description: "Combo gồm bột sắn (1kg), bột nghệ (1kg) - tiết kiệm hơn khi mua lẻ",
     badge: "Tiết kiệm",
     unit: "combo",
     stock: 30,
@@ -68,5 +54,44 @@ export const products = [
     unit: "gói",
     stock: 120,
     category: "Bột Sắn",
+  },
+]
+
+export const categories = [
+  {
+    id: 1,
+    name: "Bột Sắn",
+    image: "/bot-san-01.png",
+    description: "Bột sắn nguyên chất, không chất bảo quản",
+  },
+  {
+    id: 2,
+    name: "Bột Nghệ",
+    image: "/bot-nghe.png",
+    description: "Bột nghệ tươi xay mịn, giữ nguyên dưỡng chất",
+  },
+]
+
+export const testimonials = [
+  {
+    id: 1,
+    name: "Nguyễn Văn Huy",
+    avatar: "/placeholder.svg?height=50&width=50",
+    comment: "Sản phẩm rất chất lượng, đóng gói cẩn thận. Nem nắm thơm ngon như ở quê làm, sẽ ủng hộ shop dài dài.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Trần Thị Hồng",
+    avatar: "/placeholder.svg?height=50&width=50",
+    comment: "Bột sắn rất mịn và trắng, làm bánh rất ngon. Giao hàng nhanh, sẽ mua lại.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Lê Văn Nghị",
+    avatar: "/placeholder.svg?height=50&width=50",
+    comment: "Bột nghệ thơm, màu đẹp. Đã mua nhiều lần và luôn hài lòng với chất lượng.",
+    rating: 4,
   },
 ]
