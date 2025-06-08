@@ -250,7 +250,7 @@ export default function HomePage() {
 
   return (
     <>  
-      {/* {isLoading && (
+      {isLoading && (
         <motion.div
           initial={{ opacity: 1 }}
           animate={{ opacity: isLoading ? 1 : 0 }}
@@ -283,7 +283,7 @@ export default function HomePage() {
             />
           </div>
         </motion.div>
-      )} */}
+      )}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: isLoading ? 0 : 1 }}

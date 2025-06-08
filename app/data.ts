@@ -1,10 +1,11 @@
 export const products = [
   {
-    id: 2,
+    id: 1,
     name: "Bột Sắn Nguyên Chất",
     price: 145000,
     originalPrice: 155000,
     image: "/bot-san-04.png",
+    weight: "1kg",
     rating: 4.8,
     reviews: 203,
     description: "Bột sắn được sấy khô tự nhiên, không chất bảo quản, thích hợp làm bánh và các món ăn",
@@ -14,7 +15,7 @@ export const products = [
     category: "Bột Sắn",
   },
   {
-    id: 3,
+    id: 2,
     name: "Bột Nghệ Tươi",
     price: 125000,
     originalPrice: 135000,
@@ -28,7 +29,7 @@ export const products = [
     category: "Bột Nghệ",
   },
   {
-    id: 4,
+    id: 3,
     name: "Combo 2 Sản Phẩm",
     price: 260000,
     originalPrice: 270000,
@@ -42,7 +43,7 @@ export const products = [
     category: "Combo",
   },
   {
-    id: 5,
+    id: 4,
     name: "Bột Sắn Đóng Gói 500g",
     price: 75000,
     originalPrice: 78000,

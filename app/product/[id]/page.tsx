@@ -114,14 +114,14 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
               <h3 className="font-semibold mb-2">Thông tin sản phẩm:</h3>
               <ul className="space-y-2 text-gray-600">
                 <li>• Xuất xứ: Việt Nam</li>
-                <li>• Thương hiệu: Hải Anh Food</li>
+                <li>• Thương hiệu: Hải Anh Grocery</li>
                 <li>• Trọng lượng: {product.weight}</li>
                 <li>• Hạn sử dụng: 12 tháng</li>
                 <li>• Bảo quản: Nơi khô ráo, thoáng mát</li>
               </ul>
             </div>
 
-            <div>
+            {/* <div>
               <h3 className="font-semibold mb-2">Số lượng:</h3>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center border rounded-lg">
@@ -145,16 +145,16 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
                 </div>
                 <span className="text-gray-600">Còn lại: {product.stock} sản phẩm</span>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex space-x-4 pt-4">
               <Button className="flex-1 bg-orange-500 hover:bg-orange-600 text-white h-12">
                 Mua ngay
               </Button>
-              <Button className="flex-1 border-orange-500 text-orange-500 hover:bg-orange-50 h-12">
+              {/* <Button className="flex-1 border-orange-500 text-orange-500 hover:bg-orange-50 h-12">
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Thêm vào giỏ
-              </Button>
+              </Button> */}
             </div>
           </div>
         </motion.div>
