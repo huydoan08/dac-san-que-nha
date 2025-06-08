@@ -76,6 +76,7 @@ export default function HomePage() {
 
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const featuredProductsRef = useRef<HTMLDivElement>(null)
+  const categoriesRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setIsVisible(true)
@@ -117,19 +118,7 @@ export default function HomePage() {
   }
 
   const handleBuyNow = (product: any) => {
-    // Clear cart and add only this product
-    setCart([
-      {
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        image: product.image,
-        quantity: 1,
-        unit: product.unit,
-      },
-    ])
-    setBuyNowMode(true)
-    setShowOrderForm(true)
+    window.open('https://zalo.me/0984433566', '_blank')
   }
 
   const updateQuantity = (id: number, change: number) => {
@@ -255,6 +244,10 @@ export default function HomePage() {
     })
   }
 
+  const scrollToCategories = () => {
+    categoriesRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
   return (
     <>  
       {/* {isLoading && (
@@ -341,7 +334,11 @@ export default function HomePage() {
                     >
                       Mua ngay
                     </Button>
-                    <Button variant="outline" className="border-orange-500 text-orange-500 hover:bg-orange-50">
+                    <Button 
+                      variant="outline" 
+                      className="border-orange-500 text-orange-500 hover:bg-orange-50"
+                      onClick={scrollToCategories}
+                    >
                       Tìm hiểu thêm
                     </Button>
                   </div>
@@ -373,7 +370,7 @@ export default function HomePage() {
         </section>
 
         {/* Categories */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white" ref={categoriesRef}>
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-bold mb-2 text-gray-800">Danh mục nổi bật</h3>
