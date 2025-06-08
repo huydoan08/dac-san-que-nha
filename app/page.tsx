@@ -664,7 +664,7 @@ export default function HomePage() {
                               onClick={() => addToCart(product)}
                             >
                               <ShoppingCart className="w-4 h-4 mr-2" />
-                              Thêm vào giỏ
+                              Xem chi tiết
                             </Button>
                           </div>
                         </CardContent>
