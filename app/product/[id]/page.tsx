@@ -148,7 +148,7 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
             </div> */}
 
             <div className="flex space-x-4 pt-4">
-              <Button className="flex-1 bg-orange-500 hover:bg-orange-600 text-white h-12">
+              <Button  onClick={() => window.open('https://zalo.me/0984433566', '_blank')} className="flex-1 bg-orange-500 hover:bg-orange-600 text-white h-12">
                 Mua ngay
               </Button>
               {/* <Button className="flex-1 border-orange-500 text-orange-500 hover:bg-orange-50 h-12">

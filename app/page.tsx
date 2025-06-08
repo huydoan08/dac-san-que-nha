@@ -256,31 +256,171 @@ export default function HomePage() {
           animate={{ opacity: isLoading ? 1 : 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 bg-white flex items-center justify-center"
+          className="fixed inset-0 z-50 bg-gradient-to-b from-orange-50 to-white flex items-center justify-center overflow-hidden"
         >
-          <div className="text-center">
+          {/* Water ripples */}
+          <div className="absolute inset-0">
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={`ripple-${i}`}
+                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-orange-300"
+                initial={{ 
+                  width: 0,
+                  height: 0,
+                  opacity: 0.8
+                }}
+                animate={{
+                  width: 300,
+                  height: 300,
+                  opacity: 0
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  delay: i * 0.6,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Rain drops */}
+          <div className="absolute inset-0 overflow-hidden">
+            {[...Array(20)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-4 bg-orange-300 rounded-full"
+                initial={{ 
+                  top: -20,
+                  left: `${Math.random() * 100}%`,
+                  opacity: 0.6
+                }}
+                animate={{
+                  top: '100%',
+                  opacity: [0.6, 0.8, 0.6]
+                }}
+                transition={{
+                  duration: 1 + Math.random(),
+                  repeat: Infinity,
+                  delay: Math.random() * 2,
+                  ease: "linear"
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Particles */}
+          <div className="absolute inset-0">
+            {[...Array(15)].map((_, i) => (
+              <motion.div
+                key={`particle-${i}`}
+                className="absolute w-2 h-2 bg-orange-400 rounded-full"
+                initial={{ 
+                  x: "50%",
+                  y: "50%",
+                  scale: 0,
+                  opacity: 1
+                }}
+                animate={{
+                  x: `${50 + (Math.random() - 0.5) * 100}%`,
+                  y: `${50 + (Math.random() - 0.5) * 100}%`,
+                  scale: [0, 1, 0],
+                  opacity: [1, 0.8, 0]
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  delay: i * 0.1,
+                  ease: "easeOut"
+                }}
+              />
+            ))}
+          </div>
+
+          <div className="text-center relative z-10">
             <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-              className="w-16 h-16 border-4 border-orange-200 border-t-orange-500 rounded-full mx-auto mb-4"
-            />
+              animate={{ 
+                rotate: 360,
+                scale: [1, 1.1, 1],
+                y: [0, -10, 0]
+              }}
+              transition={{ 
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full mx-auto mb-8 flex items-center justify-center shadow-lg relative"
+            >
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 0.8, 0.5]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="absolute inset-0 bg-orange-300 rounded-full blur-xl"
+              />
+              <span className="text-white font-bold text-4xl relative z-10">H</span>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="flex items-center space-x-2"
+              className="flex items-center space-x-2 justify-center"
             >
-              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
-              </div>
-              <h1 className="text-3xl font-bold text-gray-800">Sản Phẩm Quê Nhà</h1>
+              <motion.h1 
+                className="text-4xl font-bold text-gray-800 tracking-wide"
+                animate={{
+                  textShadow: [
+                    "0 0 0px rgba(249, 115, 22, 0)",
+                    "0 0 10px rgba(249, 115, 22, 0.5)",
+                    "0 0 0px rgba(249, 115, 22, 0)"
+                  ]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                Hải Anh Grocery
+              </motion.h1>
             </motion.div>
+
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
-              transition={{ duration: 1.8, ease: "easeInOut" }}
-              className="h-1 bg-orange-500 rounded-full mt-4 max-w-xs mx-auto"
-            />
+              transition={{ duration: 1.5, ease: "easeInOut" }}
+              className="h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full mt-6 max-w-xs mx-auto relative overflow-hidden"
+            >
+              <motion.div
+                className="absolute inset-0 bg-white"
+                animate={{
+                  x: ["-100%", "100%"]
+                }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+                style={{
+                  background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)"
+                }}
+              />
+            </motion.div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-4 text-gray-600 text-lg"
+            >
+              Đang tải...
+            </motion.p>
           </div>
         </motion.div>
       )}
@@ -289,7 +429,6 @@ export default function HomePage() {
         animate={{ opacity: isLoading ? 0 : 1 }}
         transition={{ duration: 0.5, delay: isLoading ? 0 : 0.3 }}
       >
-        {/* Header */}
         <header className="bg-white shadow-sm sticky top-0 z-50">
           <div className="container mx-auto px-4 py-4">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
@@ -330,7 +469,7 @@ export default function HomePage() {
                   <div className="flex space-x-4">
                     <Button
                       className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-2"
-                      onClick={() => handleBuyNow(products[0])}
+                      onClick={() => window.open('https://zalo.me/0984433566', '_blank')}
                     >
                       Mua ngay
                     </Button>
@@ -354,7 +493,7 @@ export default function HomePage() {
                   <div className="bg-white p-4 rounded-lg shadow-lg">
                     <Image
                       src="/bot-san.png"
-                      alt="Sản phẩm quê nhà"
+                      alt="Hải Anh Grocery"
                       width={600}
                       height={400}
                       className="rounded-lg object-cover"
@@ -515,7 +654,7 @@ export default function HomePage() {
                           <div className="flex space-x-2">
                             <Button
                               className="flex-1 bg-orange-500 hover:bg-orange-600 text-white"
-                              onClick={() => handleBuyNow(product)}
+                              onClick={() => window.open('https://zalo.me/0984433566', '_blank')}
                             >
                               Mua ngay
                             </Button>
@@ -959,7 +1098,7 @@ export default function HomePage() {
 
                   <div className="flex flex-col">
                     <h4 className="text-xl font-bold text-white font-serif italic tracking-wide">Hải Anh Grocery </h4>
-                    <p className="text-sm text-orange-400">Sản Phẩm Quê Nhà</p>
+                    <p className="text-sm text-orange-400">Hải Anh Grocery</p>
                   </div>
                 </div>
                 <p className="text-gray-400">
@@ -1081,7 +1220,7 @@ export default function HomePage() {
               </div>
             </div>
             <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 Sản Phẩm Quê Nhà. Tất cả quyền được bảo lưu.</p>
+              <p>&copy; 2024 Hải Anh Grocery. Tất cả quyền được bảo lưu.</p>
             </div>
           </div>
         </footer>
