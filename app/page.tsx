@@ -809,7 +809,7 @@ export default function HomePage() {
                 {
                   icon: MapPin,
                   title: "Địa chỉ",
-                  info: "Số 1, Ngõ 36 Thịnh Quang, Đống Đa, Hà Nội",
+                  info: "số 1 ngõ 36 Thịnh Quang,P.Thịnh Quang, Q.Đống Đa, TP.Hà Nội",
                   description: "Cửa hàng chính",
                 },
               ].map((contact, index) => (
