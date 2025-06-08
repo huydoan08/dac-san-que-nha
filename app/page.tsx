@@ -618,13 +618,13 @@ export default function HomePage() {
                   className="bg-white p-6 rounded-lg shadow-md"
                 >
                   <div className="flex items-center mb-4">
-                    <Image
+                    {/* <Image
                       src={testimonial.avatar || "/placeholder.svg"}
                       alt={testimonial.name}
                       width={50}
                       height={50}
                       className="rounded-full"
-                    />
+                    /> */}
                     <div className="ml-4">
                       <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
                       <div className="flex">
