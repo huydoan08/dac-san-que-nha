@@ -121,40 +121,11 @@ export default function ProductDetail({ params }: { params: { id: string } }) {
               </ul>
             </div>
 
-            {/* <div>
-              <h3 className="font-semibold mb-2">Số lượng:</h3>
-              <div className="flex items-center space-x-4">
-                <div className="flex items-center border rounded-lg">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="h-10 w-10"
-                  >
-                    -
-                  </Button>
-                  <span className="w-12 text-center">{quantity}</span>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="h-10 w-10"
-                  >
-                    +
-                  </Button>
-                </div>
-                <span className="text-gray-600">Còn lại: {product.stock} sản phẩm</span>
-              </div>
-            </div> */}
-
             <div className="flex space-x-4 pt-4">
               <Button  onClick={() => window.open('https://zalo.me/0984433566', '_blank')} className="flex-1 bg-orange-500 hover:bg-orange-600 text-white h-12">
                 Mua ngay
               </Button>
-              {/* <Button className="flex-1 border-orange-500 text-orange-500 hover:bg-orange-50 h-12">
-                <ShoppingCart className="w-5 h-5 mr-2" />
-                Thêm vào giỏ
-              </Button> */}
+             
             </div>
           </div>
         </motion.div>
