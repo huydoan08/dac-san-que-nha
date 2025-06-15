@@ -492,14 +492,14 @@ export default function HomePage() {
                 >
                   <div className="bg-white p-4 rounded-lg shadow-lg">
                     <Image
-                      src="/bot-san.png"
-                      alt="Hải Anh Grocery"
+                      src="/bot-hoang-thanh-02.webp"
+                      alt="bot-hoang-thanh"
                       width={600}
                       height={400}
                       className="rounded-lg object-cover"
                     />
                     <div className="absolute -bottom-4 -right-4 bg-orange-500 text-white py-2 px-4 rounded-lg shadow-lg">
-                      <p className="text-sm font-bold">Giảm giá 10K</p>
+                      <p className="text-sm font-bold">Giảm giá 5%</p>
                     </div>
                   </div>
                 </motion.div>
